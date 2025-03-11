@@ -1,12 +1,15 @@
+import { useState, useRef, useEffect } from 'react'
+
 import './lightHouse.css'
 import {useGoToLanguagePage} from '../../utils/goToAnotherPage'
-import {Light} from '../light/light'
+import Light from '../light/light'
 
 
-function LightHouse(){
-    return 
-    // <!-- Estrutura do farol -->
-    <div className="light-house">
+function LightHouse(props){
+
+    const zindex = Number(props.zindex) || 1
+
+    return <div className="light-house">
         {/* <!-- Triângulo superior do farol --> */}
         <div className="top-triangle">
             {/* <!-- Detalhes do triângulo (círculos e luz) --> */}
@@ -24,6 +27,9 @@ function LightHouse(){
                 <div id="top-bar-4" className="topbar"></div>
                 <div id="top-bar-5" className="topbar"></div>
                 <div id="top-bar-6" className="topbar"></div>
+            </div>
+            <div className='glow' style={{zIndex: zindex - 10}}>
+                <Light/>
             </div>
 
             {/* <!-- Grades superiores do farol --> */}
