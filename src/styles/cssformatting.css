@@ -20,3 +20,13 @@ input{
     border: none;
     outline: none;
 }
+
+:root{
+    --first-light-color:#FFD700E5;
+    --secondary-light-color:#FFFFFFCC;
+    --third-light-color:#ECB365E5;
+    --first-dark-color:#041423;
+    --secondary-dark-color:#04293A;
+    --third-dark-color:#115173;
+    --fourth-dark-color: #0F5A7C;
+}

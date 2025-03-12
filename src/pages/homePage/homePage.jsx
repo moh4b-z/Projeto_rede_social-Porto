@@ -1,11 +1,11 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
-import Lighthouse from '../../components/Lighthouse/lightHouse'
+import LightHouse from '../../components/lightHouse/lightHouse'
 import '../../styles/cssformatting.css'
 import './homePage.css'
 
 
 function HomePage(){
-    return <Lighthouse/>
+    return <LightHouse/>
 }
 
 export default HomePage
