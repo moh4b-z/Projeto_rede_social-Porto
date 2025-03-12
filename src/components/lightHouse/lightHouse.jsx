@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-import './lightHouse.css'
+import './LightHouse.css'
 import {useGoToLanguagePage} from '../../utils/goToAnotherPage'
 import Light from '../light/light'
 
