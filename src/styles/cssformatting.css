@@ -21,12 +21,20 @@ input{
     outline: none;
 }
 
+body{
+    background-color: var(--color-navyblue);
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
 :root{
-    --first-light-color:#FFD700E5;
-    --secondary-light-color:#FFFFFFCC;
-    --third-light-color:#ECB365E5;
-    --first-dark-color:#041423;
-    --secondary-dark-color:#04293A;
-    --third-dark-color:#115173;
-    --fourth-dark-color: #0F5A7C;
+    --color-white: white;
+    --color-gold: #E5A700;
+    --color-navyblue: #041423;
+    --color-oceanblue: #04293A;
+    --color-seablue: #115173;
+    --color-lightblue: #0F5A7C;
+    --color-lightgold: #ECB365E5;
 }
