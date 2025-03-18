@@ -21,11 +21,7 @@ input{
     outline: none;
 }
 
-body{
-    background-color: var(--color-navyblue);
-    width: 100vw;
-    height: 100vh;
-}
+
 
 
 
@@ -37,4 +33,10 @@ body{
     --color-seablue: #115173;
     --color-lightblue: #0F5A7C;
     --color-lightgold: #ECB365E5;
+}
+
+body{
+    background-color: var(--color-navyblue);
+    width: 100vw;
+    height: 100vh;
 }
