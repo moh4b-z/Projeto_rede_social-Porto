@@ -1,7 +1,7 @@
 /* Colour Variables */
 :root {
-  --structureColor: #141912;
-  --colorOfBackgroundElements: #252b21;
+  --structureColor: #121519;
+  --colorOfBackgroundElements: #21252b;
   --structureTransparency: #00800000;
   --lighthouseLight: #f9f04c;
 }
@@ -10,11 +10,18 @@
   --headlightProportion: 1px;
 }
 
+.location{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 
 .light-house {
   position: absolute;
-  bottom: 40px;
-  left: 46vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: var(--headlightProportion);
 }
 .light-house *{

@@ -1,0 +1,62 @@
+main{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+main section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sectionLeft{
+    position: relative;
+}
+.sectionLeft button{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.sectionLeft button img {
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+}
+.location-LightHouse{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+}
+
+
+
+.sectionRight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-oceanblue);
+    box-shadow: -2px -2px 0 var(--color-gold);
+    border-radius: 20px;
+    padding: 5px;
+    width: 80%;
+    min-height: 100px;
+}
+
+.card h1{
+    font-size: 32px;
+    color: var(--color-white);
+    font-family: 'Mitr', sans-serif;
+    letter-spacing: 4px;
+}
