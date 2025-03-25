@@ -1,3 +1,6 @@
+body {
+    font-family: "Inter";
+}
 main{
     width: 100vw;
     height: 100vh;
@@ -16,13 +19,14 @@ main section{
 }
 .sectionLeft button{
     position: absolute;
+    background-color: transparent;
     top: 10px;
     left: 10px;
 }
 .sectionLeft button img {
     background-color: transparent;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 60px;
 }
 .location-LightHouse{
     position: absolute;
@@ -46,17 +50,63 @@ main section{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 15px;
+    color: var(--color-white);
     background-color: var(--color-oceanblue);
     box-shadow: -2px -2px 0 var(--color-gold);
     border-radius: 20px;
-    padding: 5px;
-    width: 80%;
+    padding: 20px;
+    width: 60%;
     min-height: 100px;
+    overflow: hidden;
 }
 
-.card h1{
-    font-size: 32px;
+h1{
+    font-family: "Mitr";
+    font-size: 70px;
+    font-weight: 500;
     color: var(--color-white);
-    font-family: 'Mitr', sans-serif;
-    letter-spacing: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.card input{
+    border: 2px solid var(--color-lightblue);
+    background-color: transparent;
+    padding: 6px;
+    border-radius: 16px;
+    width: 90%;
+    height: 50px;
+    color: var(--color-white);
+    
+}
+.card input::placeholder{
+    font-size: 8px;
+    color: var(--color-white70);
+    
+}
+.card button{
+    font-weight: bold;
+    font-size: 24px;
+    background-color: var(--color-lightblue);
+    padding: 6px;
+    border-radius: 16px;
+    width: 90%;
+    height: 50px;
+    color: var(--color-white);
+}
+
+.card span {
+    font-weight: bold;
+}
+
+.card span a{
+    text-decoration: none;
+    color: var(--color-gold);
+}
+.card a{
+    color: var(--color-white70);
+    text-decoration: underline;
 }

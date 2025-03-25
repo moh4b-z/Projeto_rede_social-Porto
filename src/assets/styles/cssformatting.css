@@ -19,6 +19,7 @@ button{
 input{
     border: none;
     outline: none;
+    opacity: 1;
 }
 
 
@@ -27,6 +28,7 @@ input{
 
 :root{
     --color-white: white;
+    --color-white70: #ffffffc7;
     --color-gold: #E5A700;
     --color-navyblue: #041423;
     --color-oceanblue: #04293A;

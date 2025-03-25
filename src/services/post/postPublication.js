@@ -1,6 +1,6 @@
 import BASE_URL from '../config'
 
-async function postPublication(id){
+async function deletePublication(id){
     try {
         const response = await fetch(`${BASE_URL}/publicacoes/atualizarPublicacao/${id}`, {
             method: 'POST',

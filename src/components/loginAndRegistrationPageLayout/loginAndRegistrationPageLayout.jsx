@@ -12,12 +12,13 @@ export default function LoginAndRegistrationPageLayout({ children }) {
                     <img src={logo} alt="" />
                 </button>
                 <div className='location-LightHouse'>
-                    <LightHouse size="0.9"/>
+                    <LightHouse size="1.1"/>
                 </div>
             </section>
             <section className='sectionRight'>
                 <div className='card'>
                     <h1>Porto</h1>
+                    
                     { children }
                 </div>
             </section>
