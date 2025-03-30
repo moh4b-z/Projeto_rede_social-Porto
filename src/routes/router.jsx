@@ -7,7 +7,7 @@ import ProfilePage from '../pages/profilePage/profilePage'
 const router = createBrowserRouter([
     { 
         path: "/", 
-        element: <HomePage /> 
+        element: <HomePage />
     },
     { 
         path: "/login", 

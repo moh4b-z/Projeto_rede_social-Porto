@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-import './LightHouse.css'
+import './Lighthouse.css'
 import Light from '../light/light'
 
 
