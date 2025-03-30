@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
-import postUser from '../../services/post/postUser'
+import postUser from '../../services/Register/postUser'
 
 import './signUpPage.css'
 
 function SignUpPage() {
+    const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [confirmarSenha, setConfirmarSenha] = useState("")
-    const [nome, setNome] = useState("")
+    const [senhaRecuperacao, setSenhaRecuperacao] = useState("")
     const navigate = useNavigate()
 
     const handleSignUp = async () => {
-        if (!email || !senha || !confirmarSenha || !nome) {
+        if (!email || !senha || !confirmarSenha || !nome || !senhaRecuperacao) {
             alert("Preencha todos os campos!")
             return
         }
@@ -30,9 +31,10 @@ function SignUpPage() {
                 email,
                 senha,
                 "0",
-                "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png"
+                "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png",
+                senhaRecuperacao
             )
-            console.log("Usuário cadastrado:", response)
+            // console.log("Usuário cadastrado:", response)
 
             // Redirecionar para a página de login após cadastro bem-sucedido
             navigate('/login')
@@ -43,6 +45,13 @@ function SignUpPage() {
 
     return (
         <LoginAndRegistrationPageLayout>
+            <input 
+                id='nomeUser' 
+                type="text" 
+                placeholder='Nome de usuário:' 
+                value={nome} 
+                onChange={(e) => setNome(e.target.value)}
+            />
             <input 
                 id='emailUser' 
                 type="email" 
@@ -65,11 +74,11 @@ function SignUpPage() {
                 onChange={(e) => setConfirmarSenha(e.target.value)}
             />
             <input 
-                id='nomeUser' 
+                id='senhaRecuperacao' 
                 type="text" 
-                placeholder='Nome de usuário:' 
-                value={nome} 
-                onChange={(e) => setNome(e.target.value)}
+                placeholder='Código para redefinir senha:' 
+                value={senhaRecuperacao} 
+                onChange={(e) => setSenhaRecuperacao(e.target.value)}
             />
             <button onClick={handleSignUp}>Avançar</button>
         </LoginAndRegistrationPageLayout>

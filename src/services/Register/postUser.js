@@ -1,7 +1,7 @@
 import BASE_URL from '../config'
 // BASE_URL = 'https://back-spider.vercel.app'
 
-async function postUser(nome, email, senha, premium, imagemPerfil) {
+async function postUser(nome, email, senha, premium, imagemPerfil, senhaRecuperacao) {
     try {
 
         const dados = {
@@ -10,10 +10,10 @@ async function postUser(nome, email, senha, premium, imagemPerfil) {
             senha: senha,
             premium: "0",
             imagemPerfil: imagemPerfil,
-            senhaRecuperacao: "test"
+            senhaRecuperacao: senhaRecuperacao
         }
 
-        console.log(dados);
+        // console.log(dados)
         
 
         const response = await fetch(`${BASE_URL}/user/cadastrarUser`, {
@@ -26,22 +26,22 @@ async function postUser(nome, email, senha, premium, imagemPerfil) {
             body: JSON.stringify(
                 dados
             )
-        });
-        console.log(response);
+        })
+        // console.log(response)
         
         if (!response.ok) {
-            throw new Error('Erro ao cadastrar usuário');
+            throw new Error('Erro ao cadastrar usuário')
         }
 
-        console.log(response.json());
-        
+        const responseData = await response.json()
+        console.log(responseData)
+        return responseData
 
-        return await response.json();
     } catch (error) {
-        console.error(error);
-        return null;
+        console.error(error)
+        return null
     }
 }
 
-export default postUser;
+export default postUser
 
