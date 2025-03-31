@@ -58,6 +58,7 @@ main section{
     padding: 20px;
     width: 60%;
     min-height: 100px;
+    max-height: 90%;
     overflow: hidden;
 }
 
