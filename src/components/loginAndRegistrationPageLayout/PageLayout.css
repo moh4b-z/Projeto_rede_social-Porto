@@ -59,7 +59,8 @@ main section{
     width: 60%;
     min-height: 100px;
     max-height: 90%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 h1{
