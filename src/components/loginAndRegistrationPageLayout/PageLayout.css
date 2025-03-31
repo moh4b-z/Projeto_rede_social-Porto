@@ -77,10 +77,10 @@ h1{
     border: 2px solid var(--color-lightblue);
     background-color: transparent;
     padding: 6px;
-    border-radius: 16px;
+    border-radius: 14px;
     width: 90%;
-    min-height: 50px;
-    height: 50px;
+    min-height: 40px;
+    height: 40px;
     color: var(--color-white);
     
 }
@@ -96,7 +96,7 @@ h1{
     padding: 6px;
     border-radius: 16px;
     width: 90%;
-    height: 50px;
+    height: 40px;
     color: var(--color-white);
 }
 
