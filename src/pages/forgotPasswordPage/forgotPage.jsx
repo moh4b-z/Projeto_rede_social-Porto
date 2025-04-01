@@ -1,34 +1,36 @@
+import './forgotPage.css'
+
 import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
 import {useGoToSignUpPage} from '../../utils/goToAnotherPage'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './loginPage.css'
-import postLogin from '../../services/login/postLogin'
+import postPassword from '../../services/user/recPassword'
 
 
 
-function LoginPage(){
+function ForgotPage(){
     const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
+    const [chave, setChave] = useState("")
     const navigate = useNavigate()
 
     const handleLogin = async () => {
-        if (!email || !senha) {
+        if (!email || !chave) {
             alert("Preencha todos os campos!")
             return
         }
         try {
-            console.log(email, senha)
-            const response = await postLogin(
-                email,
-                senha
-            )
-            console.log("Usuário cadastrado:", response)
+            console.log(email, chave);
+            const response = await postPassword(email, chave);
 
-            // Redirecionar para a página de login após cadastro bem-sucedido
-            navigate('/')
+            if (!response || !response.id) {
+                throw new Error("Resposta inválida do servidor");
+            }
+
+            localStorage.setItem("userId", response.id);
+            navigate('/update-passord');
+                
         } catch (error) {
-            console.error("Erro no login:", error)
+            console.error("Erro recupera senha:", error)
         }
     }
     
@@ -42,20 +44,15 @@ function LoginPage(){
                 onChange={(e) => setEmail(e.target.value)}
             />
             <input 
-                id='senhaUser' 
+                id='wordKeyUser' 
                 type="password" 
-                placeholder='Senha:' 
-                value={senha} 
-                onChange={(e) => setSenha(e.target.value)}
+                placeholder='Chave:' 
+                value={chave} 
+                onChange={(e) => setChave(e.target.value)}
             />
             <button onClick={handleLogin}>Avançar</button>
-            <span>
-                Não tem uma conta? 
-                <a onClick={() => navigate('/signup')} href="">Cadastre-se</a>
-            </span>
-            <a onClick={() => navigate('/recover')}>Esqueci a senha</a>
         </LoginAndRegistrationPageLayout>
     )
 }
 
-export default LoginPage
+export default ForgotPage
