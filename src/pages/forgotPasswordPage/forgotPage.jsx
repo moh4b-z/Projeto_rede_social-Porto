@@ -36,6 +36,9 @@ function ForgotPage(){
     
     return( 
         <LoginAndRegistrationPageLayout>
+            <span>Está enfrentando dificuldades?</span>
+            <p>Insira seu email e palavra-chave para que recuperarmos sua senha!</p>
+
             <input 
                 id='emailUser' 
                 type="email" 
@@ -46,7 +49,7 @@ function ForgotPage(){
             <input 
                 id='wordKeyUser' 
                 type="password" 
-                placeholder='Chave:' 
+                placeholder='Palavra-chave:' 
                 value={chave} 
                 onChange={(e) => setChave(e.target.value)}
             />

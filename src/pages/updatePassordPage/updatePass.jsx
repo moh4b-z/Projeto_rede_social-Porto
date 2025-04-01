@@ -8,7 +8,8 @@ import putPassword from '../../services/user/putPassword'
 
 
 
-function UpdatePage(){
+function UpdatePage(){ 
+
     const [senha, setSenha] = useState("")
     const navigate = useNavigate()
 
@@ -37,6 +38,8 @@ function UpdatePage(){
     
     return( 
         <LoginAndRegistrationPageLayout>
+            <p>Insira a nova senha</p>
+
             <input 
                 id='newPassword' 
                 type="password" 
@@ -45,7 +48,6 @@ function UpdatePage(){
                 onChange={(e) => setSenha(e.target.value)}
             />
 
-            
             <button onClick={handleLogin}>Avançar</button>
         </LoginAndRegistrationPageLayout>
     )
