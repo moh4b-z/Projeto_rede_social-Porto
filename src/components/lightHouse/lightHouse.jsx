@@ -51,11 +51,11 @@ function LightHouse(props){
                         <div className="overlay"></div> {/*<!-- Sobreposição -->*/}
                         <div className="mid-railings-rail">
                             {/* <!-- Grades do meio do farol --> */}
-                            <div className="mid-rail mid-rail-1"></div>
-                            <div className="mid-rail mid-rail-2"></div>
-                            <div className="mid-rail mid-rail-3"></div>
-                            <div className="mid-rail mid-rail-5"></div>
-                            <div className="mid-rail mid-rail-6"></div>
+                            <div id='mid-rail-1' className="mid-rail"></div>
+                            <div id='mid-rail-2' className="mid-rail"></div>
+                            <div id='mid-rail-3' className="mid-rail"></div>
+                            <div id='mid-rail-5' className="mid-rail"></div>
+                            <div id='mid-rail-6' className="mid-rail"></div>
                         </div>
                         {/* <!-- Grades do meio à esquerda e à direita --> */}
                         <div className="left-mid-railings"></div>

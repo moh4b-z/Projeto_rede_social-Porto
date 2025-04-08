@@ -1,4 +1,4 @@
-import './forgotPage.css'
+import styles from './forgotPage.module.css'
 
 import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
 import {useGoToSignUpPage} from '../../utils/goToAnotherPage'

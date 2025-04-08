@@ -184,9 +184,10 @@ transform: perspective(500em)
     height: var(--raio-glow);
     width: var(--raio-glow);
     background-color: #fbfae1;
-    background-image: radial-gradient(ellipse at center, 
-                                  #fbfae1 0%, 
-                                  #fffb6c 100%);
+    background-image: radial-gradient(center, 
+                                    ellipse cover, 
+                                    #fbfae1 0%, 
+                                    #fffb6c 100%);
     border-radius: 100%;
     box-shadow: #ffeb3b 0em 0 22em, 
             #fcfab970 0 0 3em 1em inset;

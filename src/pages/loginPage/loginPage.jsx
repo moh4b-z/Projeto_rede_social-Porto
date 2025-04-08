@@ -2,7 +2,7 @@ import LoginAndRegistrationPageLayout from '../../components/loginAndRegistratio
 import {useGoToSignUpPage} from '../../utils/goToAnotherPage'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './loginPage.css'
+import styles from './loginPage.module.css'
 import postLogin from '../../services/login/postLogin'
 
 

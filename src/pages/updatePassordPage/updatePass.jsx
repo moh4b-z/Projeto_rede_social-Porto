@@ -1,4 +1,4 @@
-import './updatePass.css'
+import styles from './updatePass.module.css'
 
 import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
 import {useGoToSignUpPage} from '../../utils/goToAnotherPage'

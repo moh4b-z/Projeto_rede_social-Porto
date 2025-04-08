@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
 import postUser from '../../services/Register/postUser'
 
-import './signUpPage.css'
+import styles from './signUpPage.module.css'
 
 function SignUpPage() {
     const [nome, setNome] = useState("")
