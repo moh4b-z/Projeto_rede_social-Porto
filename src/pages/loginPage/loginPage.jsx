@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './loginPage.module.css'
 import postLogin from '../../services/login/postLogin'
-
+import { useAuth } from '../../contexts/AuthContext'
 
 
 function LoginPage(){
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
+    const { login } = useAuth()
     const navigate = useNavigate()
 
     const handleLogin = async () => {
@@ -18,15 +19,18 @@ function LoginPage(){
             return
         }
         try {
-            console.log(email, senha)
             const response = await postLogin(
                 email,
                 senha
             )
-            console.log("Usuário cadastrado:", response)
+            console.log("Usuário logado:", response)
 
-            // Redirecionar para a página de login após cadastro bem-sucedido
-            navigate('/')
+            if (response.success) {
+                login(response.user) // salva no contexto e no localStorage
+                navigate('/')
+            } else {
+                alert("Credenciais inválidas!")
+            }
         } catch (error) {
             console.error("Erro no login:", error)
         }
