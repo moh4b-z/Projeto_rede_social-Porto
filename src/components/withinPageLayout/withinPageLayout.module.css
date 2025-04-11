@@ -59,7 +59,7 @@ main section{
     flex-direction: column;
     color: var(--color-gold);
 }
-#fieldOfFollowers h2{
+h2{
     display: block;
     width: 100%;
     text-align: center;

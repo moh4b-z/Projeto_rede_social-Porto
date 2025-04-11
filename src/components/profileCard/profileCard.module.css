@@ -1,0 +1,35 @@
+.ProfileCard{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    height: 10%;
+    gap: 5px;
+    max-height: 50px;
+    margin: 2px;
+    padding: 4px;
+    color: var(--color-white);
+    transition: 0.3s;
+}
+.ProfileCard:hover{
+    background-color: var(--color-white25);
+    color: var(--color-gold);
+}
+.ProfileCard div{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ProfileCard div img{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 50px;
+    border-radius: 50%;
+}
+.ProfileCard span{
+    flex: 1;
+}

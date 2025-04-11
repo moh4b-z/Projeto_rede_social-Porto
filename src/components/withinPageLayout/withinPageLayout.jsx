@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react'
 import logo from '../../assets/img/logo-dark_mode.png'
-import {useGoToHomePage, useGoToLoginPage,useGoToSignUpPage} from '../../utils/goToAnotherPage'
+import { useGoToHomePage, useGoToLoginPage, useGoToSignUpPage } from '../../utils/goToAnotherPage'
+import getUser from '../../services/user/getUser'
+import ProfileCard from '../profileCard/profileCard'
 import styles from './withinPageLayout.module.css'
 import { useAuth } from '../../contexts/AuthContext'
 
@@ -8,6 +11,15 @@ export default function WithinPageLayout({ children }) {
     const goToHomePage = useGoToHomePage()
     const goToLoginPage = useGoToLoginPage()
     const goToSignUpPage = useGoToSignUpPage()
+
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        getUser().then(setUsers).catch(console.error)
+    }, [])
+
+
+
     return (
         <main>
             <section className={styles.sectionLeft}>
@@ -17,46 +29,47 @@ export default function WithinPageLayout({ children }) {
                     </button>
                 </div>
                 {isLoggedIn ? 
-                    <div>
-                        <div>
-                            <img src={user.imagemPerfil} alt="Foto de perfil" width={100} />
-                            <h2>{user.nome}</h2>
-                        </div>
-                        <a href="">Meu perfil</a>
-                    </div>
-                :
-                    false
-                }
-                
+                    <ProfileCard urlIMG={user?.imagemPerfil} nameUser={user?.nome} />
+                : false}
                 <div>
                     <span>Tela Inicial</span>
                 </div>
             </section>
+
             <section className={styles.sectionMain}>                    
                 { children }
             </section>
+
             <section className={styles.sectionRight}>
-                {isLoggedIn ? 
+                {isLoggedIn ? (
                     <div id='fieldOfFollowers'>
-                        <h2>Seguidos</h2>
-                        <div id='followers'></div>
+                        <h2 className={styles.Seguidos}>Encontre novas pessoas</h2>
+                        <div id='followers'>
+                            {
+                                users.map((element) => (
+                                    <ProfileCard
+                                        key={element.id}
+                                        urlIMG={element.imagemPerfil}
+                                        nameUser={element.nome}
+                                    />
+                                ))                                
+                            }
+                        </div>
                     </div>
-                :   
-                <div className={styles.register}>
-                    <button 
-                        onClick={() => goToLoginPage('/login')} 
-                        className={styles.login}>
-                            Login
-                    </button>
-                    <button 
-                        onClick={() => goToSignUpPage('/signup')} 
-                        className={styles.signUp}>
-                            Sign Up
-                    </button>
-                </div>
-                }
-                
-                
+                ) : (
+                    <div className={styles.register}>
+                        <button 
+                            onClick={() => goToLoginPage('/login')} 
+                            className={styles.login}>
+                                Login
+                        </button>
+                        <button 
+                            onClick={() => goToSignUpPage('/signup')} 
+                            className={styles.signUp}>
+                                Sign Up
+                        </button>
+                    </div>
+                )}
             </section>
         </main>
     )

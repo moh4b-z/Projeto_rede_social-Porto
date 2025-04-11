@@ -18,6 +18,12 @@ function useGoToSignUpPage(task) {
         navigate(`/signup`)
     }
 }
+function useGoToProfilePage(name) {
+    const navigate = useNavigate()
+    return (name) => {
+        navigate(`/${name}`)
+    }
+}
 
 function useGoToSearchPage(task) {
     const navigate = useNavigate()
@@ -32,5 +38,6 @@ export {
     useGoToHomePage,
     useGoToLoginPage,
     useGoToSignUpPage,
-    useGoToSearchPage
+    useGoToSearchPage,
+    useGoToProfilePage
 }

@@ -20,16 +20,16 @@ const router = createBrowserRouter([
         element: <SignUpPage /> 
     },
     { 
-        path: "/profile", 
-        element: <ProfilePage /> 
-    },
-    { 
         path: "/recover", 
         element: <ForgotPage />
     },
     { 
         path: "/update-passord", 
         element: <UpdatePage />
+    },
+    { 
+        path: "/:username", 
+        element: <ProfilePage /> 
     }
 ])
 
