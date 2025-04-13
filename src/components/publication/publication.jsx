@@ -63,11 +63,16 @@ function Publication({ publicacao}) {
             false
           }
         </div>
-        <div className={styles.areaComments}>
-          {showComments && <Comments comments={comentarios} />}
-        </div>
+
       
         <div className={styles.areaOptions}>
+          {comentarios.length >= 0 && (
+            <CommentButton 
+              comments={comentarios} 
+              onClick={() => setShowComments(!showComments)} 
+            />
+          )}
+
           {likes.length >= 0 && (
             <Likes 
               likes={likes} 
@@ -75,12 +80,10 @@ function Publication({ publicacao}) {
               setCurtidas={setLikes}
             />
           )}
-          {comentarios.length >= 0 && (
-            <CommentButton 
-              comments={comentarios} 
-              onClick={() => setShowComments(!showComments)} 
-            />
-          )}
+        </div>
+
+        <div className={`${showComments ? styles.areaComments : ''}`}>
+          {showComments && <Comments comments={comentarios}/>}
         </div>
       </div>
     </div>

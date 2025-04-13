@@ -1,20 +1,33 @@
 
 .Publications{
     width: 100%;
+    height: auto;
     max-height: 540px;
-    padding: 10px;
-    display: flex;
-    margin: 5px;
-}
-.comComments{
-    background-color: var(--color-lightblue);
-    width: 100%;
-    max-height: 540px;
+    align-self: stretch;
     padding: 10px;
     display: flex;
     margin: 5px;
     border-radius: 15px;
+    transition: 0.5s;
 }
+.comComments{
+    background-color: var(--color-lightblue50);
+    max-height: 640px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-white25) #00000000; 
+}
+
+.areaComments{
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex: 2;
+    width: 100%;
+    height: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-white25) #00000000; 
+}
+
 .Publications h4{
     cursor: pointer;
     color: var(--color-white);
@@ -34,6 +47,7 @@
 .areaPublications{
     display: flex;
     max-height: 100%;
+    max-width: 95%;
     flex: 1;
     flex-direction: column;
     padding: 10px;
@@ -47,7 +61,6 @@
 .areaPublications p{
     color: var(--color-white);
 }
-
 
 .topPublications{
     display: flex;
@@ -63,7 +76,8 @@
 }
 
 .midiaPublications{
-    max-height: 70%;
+    height: 65%;
+    max-height: 378px;
     display: flex;
     align-items: center;
     justify-content: center;

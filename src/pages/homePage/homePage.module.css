@@ -8,8 +8,14 @@
 .scrollPublications{
     max-width: 100%;
     flex: 1;
+    height: 85%;
+    max-height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
-    scrollbar-color: var(--gray) #00000000; 
+    scrollbar-color: var(--color-white25) #00000000; 
 }
