@@ -1,0 +1,9 @@
+.like{
+    display: flex;
+    gap: 5px;
+    height: 100%;
+    align-items: center;
+}
+.like ion-icon{
+    height: 100%;
+}
