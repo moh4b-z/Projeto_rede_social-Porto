@@ -1,6 +1,6 @@
 import styles from './forgotPage.module.css'
 
-import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
+import LoginAndRegistrationPageLayout from '../../components/layouts/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
 import {useGoToSignUpPage} from '../../utils/goToAnotherPage'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'

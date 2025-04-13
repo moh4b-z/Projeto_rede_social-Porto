@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import logo from '../../assets/img/logo-dark_mode.png'
-import { useGoToHomePage, useGoToLoginPage, useGoToSignUpPage } from '../../utils/goToAnotherPage'
-import getUser from '../../services/user/getUser'
-import ProfileCard from '../profileCard/profileCard'
+import logo from '../../../assets/img/logo-dark_mode.png'
+import { useGoToHomePage, useGoToLoginPage, useGoToSignUpPage } from '../../../utils/goToAnotherPage'
+import {getUser} from '../../../services/user/getUser'
+import ProfileCard from '../../profileCard/profileCard'
 import styles from './withinPageLayout.module.css'
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 
 export default function WithinPageLayout({ children }) {
     const { user, logout, isLoggedIn } = useAuth()
@@ -17,7 +17,6 @@ export default function WithinPageLayout({ children }) {
     useEffect(() => {
         getUser().then(setUsers).catch(console.error)
     }, [])
-
 
 
     return (

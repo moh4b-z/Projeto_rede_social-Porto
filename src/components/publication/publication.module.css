@@ -1,0 +1,29 @@
+
+.Publications{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+.Publications h4{
+    color: var(--color-white);
+}
+.fotoPublications{
+    height: 100%;
+    width: 10%;
+    padding: 5px;
+}
+.fotoPublications img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+.areaPublications{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.areaOptions{
+    display: flex;
+}

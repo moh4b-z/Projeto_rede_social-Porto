@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import LoginAndRegistrationPageLayout from '../../components/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
+import LoginAndRegistrationPageLayout from '../../components/layouts/loginAndRegistrationPageLayout/loginAndRegistrationPageLayout'
 import postUser from '../../services/Register/postUser'
 
 import styles from './signUpPage.module.css'

@@ -1,6 +1,6 @@
 import BASE_URL from '../config'
 
-export default async function getUser(){
+export async function getUser(){
     try {
         const response = await fetch(`${BASE_URL}/user/listarUsers`, {
             method: 'GET',
@@ -11,6 +11,21 @@ export default async function getUser(){
         }
 
         return await response.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export async function getUserID(id){
+    try {
+        const listarUsers = await getUser()
+        const response = listarUsers.find(objeto => objeto.id === id);
+        if (!response) {
+            throw new Error(`Usario de id: ${id} não achado`)
+        }
+
+        return response
     } catch (error) {
         console.error(error)
         return null

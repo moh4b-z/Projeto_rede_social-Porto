@@ -1,8 +1,7 @@
-import LightHouse from '../lightHouse/lightHouse'
-import ParallaxWrapper from '../ParallaxWrapper/parallaxWrapper'
-import logo from '../../assets/img/logo-dark_mode.png'
+import LightHouse from '../../graphicComponents/lightHouse/lightHouse'
+import logo from '../../../assets/img/logo-dark_mode.png'
 import styles from './PageLayout.module.css'
-import {useGoToHomePage} from '../../utils/goToAnotherPage'
+import {useGoToHomePage} from '../../../utils/goToAnotherPage'
 
 export default function LoginAndRegistrationPageLayout({ children }) {
     const goToHomePage = useGoToHomePage()

@@ -1,0 +1,48 @@
+
+
+
+.comentariosContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+  }
+  
+  .iconeComentario {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  
+  .listaComentarios {
+    width: 100%;
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .comentario {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background-color: #f5f5f5;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .fotoComentario {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .nomeComentario {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  

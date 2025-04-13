@@ -1,5 +1,5 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
-import WithinPageLayout from '../../components/withinPageLayout/withinPageLayout'
+import WithinPageLayout from '../../components/layouts/withinPageLayout/withinPageLayout'
 import styles from './profilePage.module.css'
 
 function ProfilePage(){
