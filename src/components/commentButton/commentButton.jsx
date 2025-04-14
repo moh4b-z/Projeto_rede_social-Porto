@@ -3,20 +3,20 @@ import { useAuth } from '../../contexts/AuthContext';
 import styles from './commentButton.module.css';
 
 function CommentButton({ comments = [], onClick }) {
-  const { user, isLoggedIn } = useAuth();
-  const [commented, setCommented] = useState(false);
+  const { user, isLoggedIn } = useAuth()
+  const [commented, setCommented] = useState(false)
 
   useEffect(() => {
     if (isLoggedIn) {
-      const fezComentario = comments.some(c => c.idUsuario === user.id);
-      setCommented(fezComentario);
+      const fezComentario = comments.some(c => c.idUsuario === user.id)
+      setCommented(fezComentario)
     }
-  }, [comments, user]);
+  }, [comments, user])
 
   const escolherIcone = () => {
-    if (commented) return "chatbubble-ellipses-sharp";
-    if (comments.length > 0) return "chatbubble-ellipses-outline";
-    return "chatbubble-outline";
+    if (commented) return "chatbubble-ellipses-sharp"
+    if (comments.length > 0) return "chatbubble-ellipses-outline"
+    return "chatbubble-outline"
   };
 
   return (
@@ -29,7 +29,8 @@ function CommentButton({ comments = [], onClick }) {
         {comments.length}
       </span>
     </button>
-  );
+  )
 }
 
-export default CommentButton;
+
+export default CommentButton

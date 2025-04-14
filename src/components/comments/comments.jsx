@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react'
 import { getUserID } from '../../services/user/getUser'
 import {useGoToProfilePage} from '../../utils/goToAnotherPage'
+import ToSendComment from '../toSendComment/toSendComment'
+import { useAuth } from '../../contexts/AuthContext'
 import styles from './comments.module.css'
 
-function Comments({ comments = [] }) {
+function Comments({ comments = [], idPublicacao}) {
   const [userComments, setUserComments] = useState([])
+  const [comentarios, setComentarios] = useState(comments)
+  const { user, isLoggedIn } = useAuth()
   const goToProfilePage = useGoToProfilePage()
 
   useEffect(() => {
     async function carregarUsuarios() {
       const dados = await Promise.all(
-        comments.map(c => getUserID(c.idUsuario))
+        comentarios.map(c => getUserID(c.idUsuario))
       )
       setUserComments(dados)
     }
@@ -19,11 +23,29 @@ function Comments({ comments = [] }) {
       carregarUsuarios()
     }
   }, [comments])
+  const adicionarComentario = async (novoComentario) => {
+    setComentarios((prev) => [...prev, novoComentario]);
+  
+    // Buscar os dados do usuário desse novo comentário
+    const dadosUsuario = await getUserID(novoComentario.idUsuario);
+    setUserComments((prev) => [...prev, dadosUsuario]);
+  }
+  
 
   return (
     <div className={styles.listaComentarios}>
-      {comments.map((comentario, index) => (
-        <div key={comentario.id} className={styles.comentario}>
+      { isLoggedIn
+        ?
+          <ToSendComment 
+            idPublicacao={idPublicacao}
+            onCommentSent={adicionarComentario}
+          />
+        :
+          false
+      }
+      
+      {comentarios.map((comentario, index) => (
+        <div key={comentario.id ?? `comentario-${index}`} className={styles.comentario}>
           <div className={styles.fotoComentario}>
             <img 
               src={userComments[index]?.imagemPerfil} 
@@ -44,7 +66,7 @@ function Comments({ comments = [] }) {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-export default Comments;
+export default Comments

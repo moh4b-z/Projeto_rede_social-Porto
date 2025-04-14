@@ -1,0 +1,119 @@
+
+.ToSendPublication {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    height: auto;
+    padding: 4px 10px 4px 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-bottom: 3px solid var(--color-gold);
+}
+
+.fotoComentario{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fotoComentario img{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+.content{
+    display: flex;
+    min-width: 100%;
+    flex: 1;
+}
+.content textarea{
+    border: none;
+    outline: none;
+    resize: none;
+    width: 100%;
+    min-height: 40px;
+    height: auto;
+    font-size: 16px;
+    padding: 10px;
+    background-color: transparent;
+    color: var(--color-white);
+}
+.content textarea::placeholder{
+    color: var(--color-white70);
+}
+
+.ToSendPublication .button{
+    display: flex;
+    height: 100%;
+    max-height: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.inputIcones{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.inputLocal{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: 100px;
+    padding: 2px;
+    border-bottom: 1px solid var(--color-lightblue);
+}
+.inputLocal ion-icon{
+    font-size: 24px;
+    color: var(--color-seablue);
+}
+
+.ToSendPublication .button input{
+    height: 100%;
+    width: 200px;
+    background-color: transparent;
+    padding: 6px 10px;
+    color: var(--color-white);
+}
+.ToSendPublication .button input::placeholder{
+    color: var(--color-white70);
+}
+.ToSendPublication .button button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--color-lightblue);
+    border-radius: 20px;
+    height: 100%;
+    width: 80px;
+    color: var(--color-white);
+    font-weight: bolder;
+    transition: 0.3s;
+}
+.ToSendPublication .button button:hover{
+    background-color: var(--color-gold);
+}
+
+
+.previewImage {
+    margin-top: 10px;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.previewImage img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

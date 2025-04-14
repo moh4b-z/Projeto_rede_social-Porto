@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import getListPublications from '../../services/Publicacoes/getListPublications'
 import WithinPageLayout from '../../components/layouts/withinPageLayout/withinPageLayout'
+import ToSendPublication from '../../components/toSendPublication/toSendPublication'
 import Publication from '../../components/publication/publication'
 import styles from './homePage.module.css'
 
@@ -17,7 +18,13 @@ function HomePage(){
     }, [])
     return (
         <WithinPageLayout>
-            <div className={styles.nada}></div>
+            
+            {
+                isLoggedIn ?
+                    <ToSendPublication/>
+                :
+                    false
+            }
             <div className={styles.scrollPublications}>
                 {
                     publications.map((element) => (

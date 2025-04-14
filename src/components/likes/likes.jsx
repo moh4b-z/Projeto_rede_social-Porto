@@ -1,44 +1,44 @@
 import { useAuth } from '../../contexts/AuthContext'
 import putLikePublication from '../../services/Publicacoes/likePublication'
 import styles from './likes.module.css'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 function Likes({ likes = [], idPublicacao, setCurtidas }) {
     const { user, isLoggedIn } = useAuth()
-    const [total, setTotal] = useState(0);
-    const [curtiu, setCurtiu] = useState(false);
+    const [total, setTotal] = useState(0)
+    const [curtiu, setCurtiu] = useState(false)
 
     // Inicializa estado com base nas props
     useEffect(() => {
         if (isLoggedIn && user && likes) {
-            const jaCurtiu = likes.some(c => c.idUsuario === user.id);
-            setCurtiu(jaCurtiu);
-            setTotal(likes.length);
+            const jaCurtiu = likes.some(c => c.idUsuario === user.id)
+            setCurtiu(jaCurtiu)
+            setTotal(likes.length)
         }
-    }, [likes, user, isLoggedIn]);
+    }, [likes, user, isLoggedIn])
 
     const handleCurtir = async () => {
         if (!isLoggedIn) {
-            alert('Você precisa estar logado para curtir!');
-            return;
+            alert('Você precisa estar logado para curtir!')
+            return
         }
 
         if (curtiu) {
-            alert("Você já curtiu esta publicação. Em breve será possível remover o like.");
-            return;
+            alert("Você já curtiu esta publicação. Em breve será possível remover o like.")
+            return
         }
 
-        const resultado = await putLikePublication(idPublicacao, user.id);
+        const resultado = await putLikePublication(idPublicacao, user.id)
 
         if (resultado) {
-            setCurtiu(true);
-            setTotal(prev => prev + 1);
+            setCurtiu(true)
+            setTotal(prev => prev + 1)
 
             if (setCurtidas) {
-                setCurtidas(prev => [...prev, { idUsuario: user.id }]);
+                setCurtidas(prev => [...prev, { idUsuario: user.id }])
             }
         } else {
-            alert("Erro ao curtir a publicação. Tente novamente.");
+            alert("Erro ao curtir a publicação. Tente novamente.")
         }
     }
 

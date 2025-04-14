@@ -83,7 +83,13 @@ function Publication({ publicacao}) {
         </div>
 
         <div className={`${showComments ? styles.areaComments : ''}`}>
-          {showComments && <Comments comments={comentarios}/>}
+          {
+            showComments && 
+            <Comments 
+              comments={comentarios}
+              idPublicacao={publicacao.id} 
+            />
+          }
         </div>
       </div>
     </div>

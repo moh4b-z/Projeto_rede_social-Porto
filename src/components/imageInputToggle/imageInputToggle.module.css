@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.input {
+    width: 200px;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--color-lightblue);
+    background-color: transparent;
+    color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-lightblue);
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: var(--color-gold);
+}

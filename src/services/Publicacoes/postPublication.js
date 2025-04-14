@@ -1,13 +1,22 @@
 import BASE_URL from '../config'
 
-async function deletePublication(id){
+async function postPublication(dados){
     try {
-        const response = await fetch(`${BASE_URL}/publicacoes/atualizarPublicacao/${id}`, {
+        // console.log("Dados sendo enviados:", dados)
+
+        const response = await fetch(`${BASE_URL}/publicacoes/cadastrarPublicacao`, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify(
+                dados
+            )
         })
 
         if (!response.ok) {
-            throw new Error('Erro ao deletar publicação')
+            throw new Error('Erro ao fazer post da publicação')
         }
 
         return await response.json()
@@ -17,4 +26,4 @@ async function deletePublication(id){
     }
 };
 
-export default deletePublication
+export default postPublication
