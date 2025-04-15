@@ -31,4 +31,18 @@ export async function getUserID(id){
         return null
     }
 }
+export async function getUserName(name){
+    try {
+        const listarUsers = await getUser()
+        const response = listarUsers.find(objeto => objeto.nome == name);
+        if (!response) {
+            throw new Error(`Usario de id: ${id} não achado`)
+        }
+
+        return response
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
 

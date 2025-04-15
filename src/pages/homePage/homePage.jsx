@@ -27,7 +27,7 @@ function HomePage(){
             }
             <div className={styles.scrollPublications}>
                 {
-                    publications.map((element) => (
+                    publications.slice().reverse().map((element) => (
                         <Publication publicacao={element} key={element.id} />
                     ))                                
                 }

@@ -1,0 +1,34 @@
+
+.userProfile{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 25%;
+    width: 100%;
+    padding: 10px;
+}
+
+.imgUser{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+}
+.imgUser img{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+
+.scrollPublications{
+    max-width: 100%;
+    flex: 1;
+    height: 85%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-white25) #00000000; 
+}

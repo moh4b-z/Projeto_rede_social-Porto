@@ -11,7 +11,7 @@ function Likes({ likes = [], idPublicacao, setCurtidas }) {
     // Inicializa estado com base nas props
     useEffect(() => {
         if (isLoggedIn && user && likes) {
-            const jaCurtiu = likes.some(c => c.idUsuario === user.id)
+            const jaCurtiu = likes.some(c => c.idUsuario == user.id)
             setCurtiu(jaCurtiu)
             setTotal(likes.length)
         }
