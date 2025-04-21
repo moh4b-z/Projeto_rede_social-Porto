@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import {getUserName} from '../../services/user/getUser'
+import {getUserName, getUserID} from '../../services/user/getUser'
 import getListPublications from '../../services/Publicacoes/getListPublications'
 import WithinPageLayout from '../../components/layouts/withinPageLayout/withinPageLayout'
 import Publication from '../../components/publication/publication'
@@ -21,8 +21,15 @@ function ProfilePage(){
     }, [])
 
     useEffect(() => {
-        getUserName(username).then(setUserProfile).catch(console.error)
+        getUserName(username).then(setUserProfile).catch(console.error)        
     }, [username])
+
+    const publicacoesDoUsuario = userProfile
+        ? publications.filter(pub => pub.idUsuario == userProfile.id).slice().reverse()
+        : []
+    
+
+
     return (
         <WithinPageLayout>
             {!userProfile ? (
@@ -35,19 +42,16 @@ function ProfilePage(){
                             alt=""
                         />
                     </div>
-                    <div>
+                    <div className={styles.areaUserProfile}>
                         <h2>{userProfile.nome}</h2>
                         {
                             isLoggedIn && userProfile.id == user.id?
                                 <div>
-                                    <button onClick={logout}>
-                                        Sair da conta
-                                    </button>
-                                    <button>
-                                        Deletar perfil
-                                    </button>
-                                    <button>
+                                    <button className={styles.buttonUpProfile}>
                                         Editar perfil
+                                    </button>
+                                    <button onClick={logout} className={styles.buttonLogoutProfile}>
+                                        Sair da conta
                                     </button>
                                 </div>
                             :
@@ -57,11 +61,20 @@ function ProfilePage(){
                 </div>
             )}
             <div className={styles.scrollPublications}>
-                {
-                    publications.slice().reverse().map((element) => (
+                <p className={styles.Publications}>Puclicações: </p>
+            {
+                
+                publicacoesDoUsuario.length > 0 ? (
+                    
+                    publicacoesDoUsuario.map((element) => (
                         <Publication publicacao={element} key={element.id} />
-                    ))                                
-                }
+                    ))
+                ) : (
+                    <p className={styles.NoPublications}>
+                        Este usuário ainda não publicou nada.
+                    </p>
+                )
+            }
             </div>
         </WithinPageLayout>
     )

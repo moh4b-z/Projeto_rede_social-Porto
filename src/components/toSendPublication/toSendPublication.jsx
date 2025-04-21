@@ -4,7 +4,7 @@ import postPublication from '../../services/Publicacoes/postPublication'
 import ImageInputToggle from '../imageInputToggle/ImageInputToggle'
 import styles from './toSendPublication.module.css'
 
-function ToSendPublication(){
+function ToSendPublication({ onPost }){
     const [description, setDescription] = useState("")
     const [imgUrlPublication, setImgUrlPublication] = useState("")
     const [local, setLocal] = useState("")
@@ -40,6 +40,10 @@ function ToSendPublication(){
                 setDescription('')
                 setImgUrlPublication('')
                 setLocal('')
+
+                setTimeout(() => {
+                    onPost?.()
+                }, 500)
             }
         } catch (error) {
             console.error("Erro ao comentar:", error)

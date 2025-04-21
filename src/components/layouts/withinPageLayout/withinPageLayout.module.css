@@ -59,9 +59,9 @@ main section{
     flex-direction: column;
     color: var(--color-gold);
 }
-h2{
+.Seguidos{
     display: block;
     width: 100%;
     text-align: center;
-    color: var(--color-gold) !important;
+    color: var(--color-gold);
 }

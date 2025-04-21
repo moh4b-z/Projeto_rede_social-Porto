@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import {getUserID} from '../../services/user/getUser'
 import Comments from '../comments/comments'
 import CommentButton from '../commentButton/commentButton'
+import ToSendComment from '../toSendComment/toSendComment'
 import Likes from '../likes/likes'
 import { useAuth } from '../../contexts/AuthContext'
 import styles from './publication.module.css'
@@ -15,23 +16,25 @@ function Publication({ publicacao}) {
   const [showComments, setShowComments] = useState(false);
   const goToProfilePage = useGoToProfilePage()
 
-  useEffect(() => {
-    async function carregarDados() {
-      try {
-        const dadosAutor = await getUserID(publicacao.idUsuario)
-        if (!dadosAutor) {
-          console.error("Autor não encontrado para ID:", publicacao.idUsuario)
-          return
-        }
-        setAutor(dadosAutor)
-        setComentarios(publicacao.comentarios || [])
-        setLikes(publicacao.curtidas || [])
-      } catch (err) {
-        console.error("Erro ao carregar dados da publicação:", err)
+  const carregarDados = async () => {
+    try {
+      const dadosAutor = await getUserID(publicacao.idUsuario)
+      if (!dadosAutor) {
+        console.error("Autor não encontrado para ID:", publicacao.idUsuario)
+        return
       }
+      setAutor(dadosAutor)
+      setComentarios(publicacao.comentarios || [])
+      setLikes(publicacao.curtidas || [])
+    } catch (err) {
+      console.error("Erro ao carregar dados da publicação:", err)
     }
+  }
+  
+  useEffect(() => {
     carregarDados()
   }, [publicacao])
+  
   
 
   if (!autor) return <p style={{color: "var(--color-white)"}}>Carregando publicação...</p>
@@ -84,13 +87,23 @@ function Publication({ publicacao}) {
 
         <div className={`${showComments ? styles.areaComments : ''}`}>
           {
-            showComments && 
-            <Comments 
-              comments={comentarios}
-              idPublicacao={publicacao.id} 
-            />
+            showComments && (
+              <>
+                {isLoggedIn && (
+                  <ToSendComment 
+                    idPublicacao={publicacao.id}
+                    onComment={carregarDados}
+                  />
+                )}
+                <Comments 
+                  comments={comentarios}
+                  idPublicacao={publicacao.id} 
+                />
+              </>
+            )
           }
         </div>
+
       </div>
     </div>
   );

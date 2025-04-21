@@ -13,15 +13,19 @@ function HomePage(){
     const navigate = useNavigate()
     const [publications, setPublications] = useState([])
     
-    useEffect(() => {
+    const fetchPublications = () => {
         getListPublications().then(setPublications).catch(console.error)
+    }
+
+    useEffect(() => {
+        fetchPublications()
     }, [])
     return (
         <WithinPageLayout>
             
             {
                 isLoggedIn ?
-                    <ToSendPublication/>
+                    <ToSendPublication onPost={fetchPublications}/>
                 :
                     false
             }

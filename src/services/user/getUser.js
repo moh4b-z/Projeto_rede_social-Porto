@@ -19,13 +19,15 @@ export async function getUser(){
 
 export async function getUserID(id){
     try {
-        const listarUsers = await getUser()
-        const response = listarUsers.find(objeto => objeto.id == id);
-        if (!response) {
+        const response = await fetch(`${BASE_URL}/user/pesquisarUser/${id}`, {
+            method: 'GET',
+        })
+
+        if (!response.ok) {
             throw new Error(`Usario de id: ${id} não achado`)
         }
 
-        return response
+        return await response.json()
     } catch (error) {
         console.error(error)
         return null
@@ -36,7 +38,7 @@ export async function getUserName(name){
         const listarUsers = await getUser()
         const response = listarUsers.find(objeto => objeto.nome == name);
         if (!response) {
-            throw new Error(`Usario de id: ${id} não achado`)
+            throw new Error(`Usario de nome: ${name} não achado`)
         }
 
         return response

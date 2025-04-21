@@ -30,6 +30,7 @@
     flex: 1;
 }
 .content textarea{
+    margin: 5px;
     border: none;
     outline: none;
     resize: none;
@@ -38,6 +39,7 @@
     height: auto;
     font-size: 16px;
     padding: 10px;
+    padding-inline: 20px;
     background-color: transparent;
     color: var(--color-white);
 }

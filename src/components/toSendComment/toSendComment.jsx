@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import putCommentPublication from '../../services/Publicacoes/commentPublication'
 import styles from './toSendComment.module.css'
 
-function ToSendComment({idPublicacao, onCommentSent }){
+function ToSendComment({idPublicacao, onComment }){
     const [description, setDescription] = useState("")
     const {user} = useAuth()
 
@@ -21,13 +21,16 @@ function ToSendComment({idPublicacao, onCommentSent }){
             )
             if (response) {
                 setDescription('')
-                // Garante que vai ter o campo correto
+
                 const comentarioFormatado = {
                     ...response,
-                    idUsuario: response.idUsuario || user.id // se já vier, usa; se não, insere
+                    idUsuario: response.idUsuario || user.id 
                 }
 
-                onCommentSent && onCommentSent(comentarioFormatado)
+                setTimeout(() => {
+                    onComment?.()
+                }, 500)
+                  
             }
         } catch (error) {
             console.error("Erro ao comentar:", error)
