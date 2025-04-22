@@ -97,3 +97,12 @@
     padding: 2px;
     gap: 5px;
 }
+
+
+.deletePublications{
+    font-size: 16px;
+    color: var(--color-lightblue);
+}
+.deletePublications:hover{
+    color: var(--color-gold);
+}

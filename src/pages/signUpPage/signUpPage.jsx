@@ -25,13 +25,11 @@ function SignUpPage() {
         }
 
         try {
-            console.log(nome, email, senha)
+            // console.log(nome, email, senha)
             const response = await postUser(
                 nome,
                 email,
                 senha,
-                "0",
-                "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png",
                 senhaRecuperacao
             )
             // console.log("Usuário cadastrado:", response)

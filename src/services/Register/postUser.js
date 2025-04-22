@@ -1,7 +1,7 @@
 import BASE_URL from '../config'
 // BASE_URL = 'https://back-spider.vercel.app'
 
-async function postUser(nome, email, senha, premium, imagemPerfil, senhaRecuperacao) {
+async function postUser(nome, email, senha, senhaRecuperacao) {
     try {
 
         const dados = {
@@ -9,7 +9,7 @@ async function postUser(nome, email, senha, premium, imagemPerfil, senhaRecupera
             email: email,
             senha: senha,
             premium: "0",
-            imagemPerfil: imagemPerfil,
+            imagemPerfil: "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png",
             senhaRecuperacao: senhaRecuperacao
         }
 

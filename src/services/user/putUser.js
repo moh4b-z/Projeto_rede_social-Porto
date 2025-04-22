@@ -1,9 +1,23 @@
 import BASE_URL from '../config'
 
-async function putUser(id){
+async function putUser(nome, email, imagemPerfil, senhaRecuperacao, id){
     try {
+        const dados = {
+            nome: nome,
+            email: email,
+            premium: "0",
+            imagemPerfil: imagemPerfil,
+            senhaRecuperacao: senhaRecuperacao
+        }
         const response = await fetch(`${BASE_URL}/user/atualizarUser/${id}`, {
             method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify(
+                dados
+            )
         })
 
         if (!response.ok) {

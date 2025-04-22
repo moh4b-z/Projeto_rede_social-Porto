@@ -65,3 +65,11 @@ main section{
     text-align: center;
     color: var(--color-gold);
 }
+
+.areaRoutes{
+    color: var(--color-gold);
+}
+.areaRoutes span{
+    display: flex;
+    gap: 10px;
+}

@@ -6,11 +6,14 @@ async function deleteUser(id){
             method: 'DELETE',
         })
 
+        console.log("Status da resposta:", response.status)
+
         if (!response.ok) {
-            throw new Error('Erro ao deletar usario')
+            throw new Error('Erro ao deletar User')
         }
 
-        return await response.json()
+        const text = await response.text()
+        return text ? JSON.parse(text) : true
     } catch (error) {
         console.error(error)
         return null

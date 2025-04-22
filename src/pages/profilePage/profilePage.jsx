@@ -10,6 +10,7 @@ import styles from './profilePage.module.css'
 function ProfilePage(){
     const { username } = useParams()
     const [userProfile, setUserProfile] = useState(null)
+    const [editProfile, setEditProfile] = useState(false)
     const navigate = useNavigate()
     const { user, logout, isLoggedIn } = useAuth()
 
@@ -34,31 +35,39 @@ function ProfilePage(){
         <WithinPageLayout>
             {!userProfile ? (
                 <p>Carregando perfil...</p>
-            ) : (
-                <div className={styles.userProfile}>
-                    <div className={styles.imgUser}>
-                        <img 
-                            src={userProfile.imagemPerfil} 
-                            alt=""
-                        />
-                    </div>
-                    <div className={styles.areaUserProfile}>
-                        <h2>{userProfile.nome}</h2>
-                        {
-                            isLoggedIn && userProfile.id == user.id?
-                                <div>
-                                    <button className={styles.buttonUpProfile}>
-                                        Editar perfil
-                                    </button>
-                                    <button onClick={logout} className={styles.buttonLogoutProfile}>
-                                        Sair da conta
-                                    </button>
-                                </div>
-                            :
-                                false
-                        }
-                    </div>
-                </div>
+            ) 
+            : ( <>
+                {
+                    editProfile 
+                        ? 
+                            false 
+                        : 
+                        <div className={styles.userProfile}>
+                            <div className={styles.imgUser}>
+                                <img 
+                                    src={userProfile.imagemPerfil} 
+                                    alt=""
+                                />
+                            </div>
+                            <div className={styles.areaUserProfile}>
+                                <h2>{userProfile.nome}</h2>
+                                {
+                                    isLoggedIn && userProfile.id == user.id?
+                                        <div>
+                                            <button className={styles.buttonUpProfile}>
+                                                Editar perfil
+                                            </button>
+                                            <button onClick={logout} className={styles.buttonLogoutProfile}>
+                                                Sair da conta
+                                            </button>
+                                        </div>
+                                    :
+                                        false
+                                }
+                            </div>
+                        </div>
+                }</>
+                
             )}
             <div className={styles.scrollPublications}>
                 <p className={styles.Publications}>Puclicações: </p>

@@ -30,8 +30,11 @@ export default function WithinPageLayout({ children }) {
                 {isLoggedIn ? 
                     <ProfileCard urlIMG={user?.imagemPerfil} nameUser={user?.nome} />
                 : false}
-                <div>
-                    <span>Tela Inicial</span>
+                <div className={styles.areaRoutes}>
+                    <span>
+                        <ion-icon name="home"></ion-icon>
+                        Tela Inicial
+                    </span>
                 </div>
             </section>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import {getUserID} from '../../services/user/getUser'
+import deletePublication from '../../services/Publicacoes/deletePublication'
 import Comments from '../comments/comments'
 import CommentButton from '../commentButton/commentButton'
 import ToSendComment from '../toSendComment/toSendComment'
@@ -56,7 +57,7 @@ function Publication({ publicacao}) {
           <p>{publicacao.descricao}</p>
         </div>
         
-        <span>-{publicacao.local}-</span>
+        <span>{publicacao.local}</span>
         <div className={styles.midiaPublications}>
           {
             publicacao.imagem 
@@ -82,6 +83,27 @@ function Publication({ publicacao}) {
               idPublicacao={publicacao.id} 
               setCurtidas={setLikes}
             />
+          )}
+
+          {isLoggedIn && publicacao.idUsuario === user.id && (
+            <button
+              className={styles.deletePublications}
+              onClick={async () => {}}
+            >
+              <ion-icon name="pencil-sharp"></ion-icon>
+            </button>
+          )}
+
+          {isLoggedIn && publicacao.idUsuario === user.id && (
+            <button
+              className={styles.deletePublications}
+              onClick={async () => {
+                const response = await deletePublication(publicacao.id)
+                // console.log(`O response foi: ${response}, para deletar a publicação de id: ${publicacao.id}`)
+              }}
+            >
+              <ion-icon name="trash"></ion-icon>
+            </button>
           )}
         </div>
 
