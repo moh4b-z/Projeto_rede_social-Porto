@@ -20,7 +20,9 @@ function ForgotPage(){
         }
         try {
             console.log(email, chave);
-            const response = await postPassword(email, chave);
+            const response = await postPassword(email, chave)
+            console.log(response);
+            
 
             if (!response || !response.id) {
                 throw new Error("Resposta inválida do servidor");

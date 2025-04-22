@@ -22,14 +22,14 @@
 .areaUserProfile{
     display: flex;
     flex: 1;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     padding: 20px;
     padding-inline: 50px;
 }
 .areaUserProfile h2{
     color: var(--color-white);
-    font-size: 60px;
+    font-size: 30px;
 }
 .areaUserProfile div{
     display: flex;
@@ -41,22 +41,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
     overflow: hidden;
     transition: 0.2s;
 }
 .buttonLogoutProfile{
-    color: red;
-    border: 2px solid red;
-    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(211, 3, 3);
+    width: 130px;
+    padding: 1px;
 }
 .buttonUpProfile{
     background-color: var(--color-seablue);
+    padding-block: 2px;
     color: var(--color-white);
     font-size: 16px;
     font-weight: bold;
     border-radius: 50px;
-    width: 150px;
+    width: 120px;
 }
 .buttonUpProfile:hover{
     transform: scale(1.05);

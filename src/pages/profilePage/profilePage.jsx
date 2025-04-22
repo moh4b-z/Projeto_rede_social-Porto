@@ -74,7 +74,7 @@ function ProfilePage(){
                 
             )}
             <div className={styles.scrollPublications}>
-                <p className={styles.Publications}>Puclicações: </p>
+                <p className={styles.Publications}>Publicações: </p>
             {
                 
                 publicacoesDoUsuario.length > 0 ? (

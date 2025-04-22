@@ -74,6 +74,10 @@
     display: flex;
 }
 
+.textPublications p{
+    font-weight: normal;
+}
+
 .midiaPublications{
     height: 65%;
     max-height: 378px;
