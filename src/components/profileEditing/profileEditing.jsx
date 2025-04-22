@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import {deleteUser} from '../../services/user/deleteUser'
-import {putUser} from '../../services/user/putUser'
+import deleteUser from '../../services/user/deleteUser'
+import putUser from '../../services/user/putUser'
 import ImageInputToggle from '../imageInputToggle/ImageInputToggle'
 import styles from './profileEditing.module.css'
 

@@ -44,9 +44,9 @@ export default function WithinPageLayout({ children }) {
 
             <section className={styles.sectionRight}>
                 {isLoggedIn ? (
-                    <div id='fieldOfFollowers'>
+                    <div className={styles.fieldOfFollowers}>
                         <h2 className={styles.Seguidos}>Encontre novas pessoas</h2>
-                        <div id='followers'>
+                        <div className={styles.followers}>
                             {
                                 users.map((element) => (
                                     <ProfileCard

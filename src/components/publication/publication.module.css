@@ -67,12 +67,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2px;
 }
 
 .textPublications{
     width: 100%;
-    padding: 2px;
     display: flex;
 }
 
@@ -81,7 +79,7 @@
     max-height: 378px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     padding: 10px;
 }
 .midiaPublications img{

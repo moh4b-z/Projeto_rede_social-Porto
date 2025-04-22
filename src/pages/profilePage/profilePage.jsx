@@ -5,6 +5,7 @@ import {getUserName, getUserID} from '../../services/user/getUser'
 import getListPublications from '../../services/Publicacoes/getListPublications'
 import WithinPageLayout from '../../components/layouts/withinPageLayout/withinPageLayout'
 import Publication from '../../components/publication/publication'
+import ProfileEditing from '../../components/profileEditing/profileEditing'
 import styles from './profilePage.module.css'
 
 function ProfilePage(){
@@ -40,7 +41,7 @@ function ProfilePage(){
                 {
                     editProfile 
                         ? 
-                            false 
+                            <ProfileEditing/> 
                         : 
                         <div className={styles.userProfile}>
                             <div className={styles.imgUser}>
@@ -54,7 +55,10 @@ function ProfilePage(){
                                 {
                                     isLoggedIn && userProfile.id == user.id?
                                         <div>
-                                            <button className={styles.buttonUpProfile}>
+                                            <button 
+                                                className={styles.buttonUpProfile}
+                                                onClick={() => setEditProfile(true)}
+                                            >
                                                 Editar perfil
                                             </button>
                                             <button onClick={logout} className={styles.buttonLogoutProfile}>
