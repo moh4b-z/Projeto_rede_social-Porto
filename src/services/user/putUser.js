@@ -29,6 +29,6 @@ async function putUser(nome, email, imagemPerfil, senhaRecuperacao, id){
         console.error(error)
         return null
     }
-};
+}
 
 export default putUser

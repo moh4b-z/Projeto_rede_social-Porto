@@ -40,7 +40,6 @@ function SignUpPage() {
             console.error("Erro no cadastro:", error)
         }
     }
-
     return (
         <LoginAndRegistrationPageLayout>
             <input 

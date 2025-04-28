@@ -41,7 +41,7 @@ function ProfilePage(){
                 {
                     editProfile 
                         ? 
-                            <ProfileEditing/> 
+                            <ProfileEditing setEditProfile={setEditProfile}/> 
                         : 
                         <div className={styles.userProfile}>
                             <div className={styles.imgUser}>
