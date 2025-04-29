@@ -141,11 +141,12 @@ function Publication({ publicacao}) {
               className={styles.saveButton}
               onClick={async () => {
                 // Aqui você chama sua função de atualizar a publicação
-                await putPublication( atualizar, publicacao.id)
+                const response = await putPublication( atualizar, publicacao.id)
+                console.log(response)
                 setIsEditing(false)
               }}
             >
-              Salvar
+              Enviar
             </button>
           )}
 

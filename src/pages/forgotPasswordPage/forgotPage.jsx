@@ -21,15 +21,14 @@ function ForgotPage(){
         try {
             console.log(email, chave);
             const response = await postPassword(email, chave)
-            console.log(response);
             
 
             if (!response || !response.id) {
-                throw new Error("Resposta inválida do servidor");
+                throw new Error("Resposta inválida do servidor")
             }
 
-            localStorage.setItem("userId", response.id);
-            navigate('/update-passord');
+            localStorage.setItem("userId", response.id)
+            navigate('/update-passord')
                 
         } catch (error) {
             console.error("Erro recupera senha:", error)
