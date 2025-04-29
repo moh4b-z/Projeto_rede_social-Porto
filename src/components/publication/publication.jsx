@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import {getUserID} from '../../services/user/getUser'
 import deletePublication from '../../services/Publicacoes/deletePublication'
+import putPublication from '../../services/Publicacoes/putPublication'
 import Comments from '../comments/comments'
 import CommentButton from '../commentButton/commentButton'
 import ToSendComment from '../toSendComment/toSendComment'
@@ -14,7 +15,11 @@ function Publication({ publicacao}) {
   const [autor, setAutor] = useState(null)
   const [comentarios, setComentarios] = useState([])
   const [likes, setLikes] = useState([])
-  const [showComments, setShowComments] = useState(false);
+  const [showComments, setShowComments] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const [editDescricao, setEditDescricao] = useState(publicacao.descricao)
+  const [editImagem, setEditImagem] = useState(publicacao.imagem)
+
   const goToProfilePage = useGoToProfilePage()
 
   const carregarDados = async () => {
@@ -30,6 +35,13 @@ function Publication({ publicacao}) {
     } catch (err) {
       console.error("Erro ao carregar dados da publicação:", err)
     }
+  }
+  const atualizar = {
+      "descricao": editDescricao,
+      "dataPublicacao": publicacao.dataPublicacao,
+      "imagem": editImagem,
+      "local": publicacao.local,
+      "idUsuario": publicacao.id
   }
   
   useEffect(() => {
@@ -53,22 +65,36 @@ function Publication({ publicacao}) {
           <h4 onClick={() => goToProfilePage(autor.nome)}>{autor.nome}</h4>
           <span>{publicacao.dataPublicacao}</span>
         </div>
-        <div className={styles.textPublications}>
-          <p>{publicacao.descricao}</p>
-        </div>
+
         
-        <span>{publicacao.local}</span>
-        <div className={styles.midiaPublications}>
-          {
-            publicacao.imagem 
-            ?
-              <img src={publicacao.imagem} alt="Imagem da publicação"/>
-            :
-            false
-          }
+
+
+        <div className={styles.textPublications}>
+          {isEditing ? (
+            <textarea 
+              value={editDescricao} 
+              onChange={(e) => setEditDescricao(e.target.value)}
+            />
+          ) : (
+            <p>{publicacao.descricao}</p>
+          )}
         </div>
 
-      
+        <span>{publicacao.local}</span>
+
+        <div className={styles.midiaPublications}>
+          {isEditing ? (
+            <input 
+              type="text" 
+              placeholder="Link da nova imagem" 
+              value={editImagem}
+              onChange={(e) => setEditImagem(e.target.value)}
+            />
+          ) : (
+            publicacao.imagem && <img src={publicacao.imagem} alt="Imagem da publicação" />
+          )}
+        </div>
+
         <div className={styles.areaOptions}>
           {comentarios.length >= 0 && (
             <CommentButton 
@@ -88,7 +114,11 @@ function Publication({ publicacao}) {
           {isLoggedIn && publicacao.idUsuario === user.id && (
             <button
               className={styles.deletePublications}
-              onClick={async () => {}}
+              onClick={() => {
+                setIsEditing(true)
+                setEditDescricao(publicacao.descricao)
+                setEditImagem(publicacao.imagem)
+              }}
             >
               <ion-icon name="pencil-sharp"></ion-icon>
             </button>
@@ -105,6 +135,20 @@ function Publication({ publicacao}) {
               <ion-icon name="trash"></ion-icon>
             </button>
           )}
+
+          {isEditing && (
+            <button
+              className={styles.saveButton}
+              onClick={async () => {
+                // Aqui você chama sua função de atualizar a publicação
+                await putPublication( atualizar, publicacao.id)
+                setIsEditing(false)
+              }}
+            >
+              Salvar
+            </button>
+          )}
+
         </div>
 
         <div className={`${showComments ? styles.areaComments : ''}`}>
