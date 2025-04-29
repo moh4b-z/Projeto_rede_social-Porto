@@ -15,6 +15,7 @@ main section{
     height: 100%;
     width: 15%;
     padding: 10px;
+    row-gap: 10px;
 }
 .sectionLeft button{
     background-color: transparent;
