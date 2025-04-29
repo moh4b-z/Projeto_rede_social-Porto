@@ -72,7 +72,7 @@
     width: 100%;
     padding: 10px 2px 20px 2px;
 }
-.theInputs input{
+.theInputs input, .inputImagemPerfil{
     color: var(--color-white);
     border: 1px solid var(--color-lightblue);
     border-radius: 8px;
@@ -80,7 +80,7 @@
     width: 100%;
     padding: 5px;
 }
-.theInputs input::placeholder{
+.theInputs input::placeholder, .inputImagemPerfil::placeholder{
     color: var(--color-white25);
 }
 

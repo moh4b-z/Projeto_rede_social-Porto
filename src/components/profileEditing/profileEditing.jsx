@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import deleteUser from '../../services/user/deleteUser'
 import putUser from '../../services/user/putUser'
@@ -6,13 +7,14 @@ import ImageInputToggle from '../imageInputToggle/ImageInputToggle'
 import styles from './profileEditing.module.css'
 
 function ProfileEditing({ setEditProfile }){
-    const { user, logout} = useAuth()
+    const navigate = useNavigate()
+    const { user, logout, login} = useAuth()
     const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
     const [senhaRecuperacao, setSenhaRecuperacao] = useState("")
     const [imagemPerfil, setImagemPerfil] = useState("")
     const [toDeleteProfile, setToDeleteProfile] = useState(false)
-    const [toImgrofile, setToImgProfile] = useState(false)
+    const [toImgProfile, setToImgProfile] = useState(false)
 
 
     const handlePut = async () => {
@@ -28,6 +30,7 @@ function ProfileEditing({ setEditProfile }){
                     user.id
                 )
                 console.log(response)
+                login(response)
             } catch (error) {
                 console.error("Erro ao atualizar:", error)
             }
@@ -41,13 +44,33 @@ function ProfileEditing({ setEditProfile }){
             <div className={styles.topOfEdit}>
                 <div>
                     <div className={styles.imagemPerfil}>
-                        <img src={user.imagemPerfil} alt={user.nome} />
+                        <img 
+                            src={imagemPerfil ? imagemPerfil : user.imagemPerfil} 
+                            alt={user.nome} 
+                        />
                     </div>
                     <div>
                         <p>Alterar foto de perfil:</p>
-                        <button className={styles.buttonN} >Remover foto</button>
-                        <button className={styles.buttonN}>Mudar foto</button>
-                        {}
+                        <button 
+                            className={styles.buttonN}
+                            onClick={() => setImagemPerfil("https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png")}
+                        >
+                            Remover foto
+                        </button>
+                        <button 
+                            className={styles.buttonN}
+                            onClick={() => {toImgProfile ? setToImgProfile(false) : setToImgProfile(true)}}
+                        >
+                            Mudar foto
+                        </button>
+                        {toImgProfile ? 
+                            <input 
+                                className={styles.inputImagemPerfil}
+                                type="text"
+                                placeholder={`Coloque uma imagem`} 
+                                onChange={(e) => setImagemPerfil(e.target.value)}
+                            />
+                        : false}
                     </div>
                 </div>
                 
@@ -87,10 +110,16 @@ function ProfileEditing({ setEditProfile }){
                             <button
                                 className={styles.buttonN}
                                 onClick={async () => {
-                                  const response = await deleteUser(user.id)
-                                  console.log(`O response foi: ${response}`)
-                                  response && logout()
-                                }}
+                                    const response = await deleteUser(user.id)
+                                    console.log(`O response foi: ${response}`)
+                                    
+                                    if (response) {
+                                      navigate('/')
+                                      setTimeout(() => {
+                                        logout()
+                                      }, 100)
+                                    }
+                                }}                                  
                             >
                                 Sim
                             </button>

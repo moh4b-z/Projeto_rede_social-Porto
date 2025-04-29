@@ -37,9 +37,8 @@ function ImageInputToggle({ imgUrl, setImgUrl }) {
             alert("Link inválido! Certifique-se de usar um link direto de imagem como .jpg, .png, etc.");
             // Mantém o input aberto para o usuário corrigir
         }
-    };
+    }
     
-
     return (
         <div className={styles.wrapper}>
             {isOpen ? (
